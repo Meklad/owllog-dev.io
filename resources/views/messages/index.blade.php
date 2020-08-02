@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-3">
             <h3>Online Users</h3><hr>
+            <h5 class="text-centert" id="no-online-users">Online Users</h5>
             <ul class="list-group" id="online-users" style="color:#3490dc;">
                 
             </ul>
