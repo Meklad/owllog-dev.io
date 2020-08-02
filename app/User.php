@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -40,5 +40,10 @@ class User extends Authenticatable
     public function getNameAttribute($value)
     {
         return ucfirst($value);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(\App\Message::class, 'user_id');
     }
 }
