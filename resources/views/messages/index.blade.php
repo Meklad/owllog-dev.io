@@ -12,11 +12,20 @@
         </div>
         <div class="col-md-9 d-flex flex-column" style="height: 80vh;">
             <div class="h-100 bg-white mb-4 p-5" id="chat" style="overflow-y: scroll;">
-                
+                @foreach($messages as $message)
+                    <div class="mt-4 w-50 text-white p-3 rounded {{ auth()->user()->id == $message->user_id ? 'float-right bg-primary' : 'float-left bg-warning' }}">
+                        <p>
+                            {{ auth()->user()->id == $message->user_id ? 'you: ' : 'other: ' }}
+                            <br>
+                            {{ $message->body }}
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                @endforeach
             </div>
             <form action="#">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Message..." aria-label="Recipient's username" aria-describedby="basic-addon2" data-url="{{ route('messages.store') }}">
+                    <input type="text" class="form-control" placeholder="Message..." aria-label="Recipient's username" aria-describedby="basic-addon2" data-url="{{ route('messages.store') }}" id="chat-text">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button">
                             Send

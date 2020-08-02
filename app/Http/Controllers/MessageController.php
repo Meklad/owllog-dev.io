@@ -14,7 +14,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('messages.index');
+        return view('messages.index')->with([
+            'messages' => Message::all()
+        ]);
     }
 
     /**

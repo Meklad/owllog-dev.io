@@ -33,3 +33,11 @@ window.Echo.join(`online`)
         }
         $(`#user-${user.id}`).remove();
     });
+
+$('#chat-text').keypress((e) => {
+    if(e.which == 13) {
+        e.preventDefault();
+        let body = $(this).val();
+        console.log(body)
+    }
+})
