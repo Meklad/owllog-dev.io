@@ -6,3 +6,11 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #34ce9c;
+  border-radius: 50%;
+  display: inline-block;
+}

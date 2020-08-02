@@ -49274,6 +49274,21 @@ module.exports = yeast;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.Echo.join("online").here(function (users) {
+  var userId = $('meta[name=user-id]').attr('content');
+  users.forEach(function (user) {
+    if (user.id == userId) {
+      return;
+    }
+
+    $('#online-users').append("<li class=\"list-group-item\" id=\"user-".concat(user.id, "\"><span class=\"dot\"></span> ").concat(user.name, "</li>"));
+  });
+}).joining(function (user) {
+  $('#online-users').append("<li class=\"list-group-item\"id=\"user-".concat(user.id, "\"><span class=\"dot\"></span> ").concat(user.name, "</li>"));
+}).leaving(function (user) {
+  $("#user-".concat(user.id)).remove();
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
