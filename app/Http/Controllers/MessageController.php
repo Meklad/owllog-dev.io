@@ -15,7 +15,7 @@ class MessageController extends Controller
     public function index()
     {
         return view('messages.index')->with([
-            'messages' => Message::all()
+            'messages' => Message::Conversation(request()->ids)
         ]);
     }
 
@@ -83,5 +83,13 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         //
+    }
+
+    public function getConversation()
+    {
+        $participants = request()->participants;
+        return view('messages.index')->with([
+            'messages' => Message::Conversation($participants)
+        ]);   
     }
 }
